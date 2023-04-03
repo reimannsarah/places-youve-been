@@ -44,3 +44,41 @@ function Place(city, timeOfYear, bestRest) {
 Place.prototype.note = function(note) {
     this.note = note;
 };
+
+let guideBook = new GuideBook()
+
+function userInput(e){
+    e.preventDefault();
+    const city = document.getElementById("cityName").value;
+    const timeOfYear = document.getElementById("timeOfYear").value;
+    const bestRest = document.getElementById("bestRest").value;
+
+    let place = new Place(city, timeOfYear, bestRest);
+    guideBook.addPlace(place);
+    displayPlaces();
+}
+
+function displayPlaces() {
+    const display = document.getElementById("placeCards");
+    const ids = Object.keys(guideBook.places);
+    let card = document.createElement("div");
+    card.setAttribute("class", "card")
+    let pCity = document.createElement("p");
+    let pTimeOfYear = document.createElement("p");
+    let pbestRest = document.createElement("p");
+    console.log(ids);
+    ids.forEach(function(id){
+        if (id === ids.length.toString()){            
+            pCity.append(guideBook.places[id].city);
+            pTimeOfYear.append(guideBook.places[id].timeOfYear);
+            pbestRest.append(guideBook.places[id].bestRest);
+            card.append(pCity, pTimeOfYear, pbestRest);
+            display.append(card);
+        };
+    });
+
+}
+
+window.addEventListener("load", function() {
+    document.querySelector("form").addEventListener("submit", userInput)
+})
