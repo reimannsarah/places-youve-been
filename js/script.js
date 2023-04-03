@@ -19,6 +19,10 @@ GuideBook.prototype.searchId = function(id){
     return false;
 };
 
+GuideBook.prototype.deleteEntry = function (id){
+    delete this.places[id];
+}
+
 // GuideBook.prototype.searchCity = function(cityName) {
 //     const ids = Object.keys(this.places);
 //     console.log(ids);
@@ -60,24 +64,35 @@ function userInput(e){
 
 function displayPlaces() {
     const display = document.getElementById("placeCards");
-    const ids = Object.keys(guideBook.places);
     let card = document.createElement("div");
     card.setAttribute("class", "card")
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.setAttribute("class", "delete");
+    deleteBtn.innerText = "X";
+
     let pCity = document.createElement("p");
     let pTimeOfYear = document.createElement("p");
     let pbestRest = document.createElement("p");
-    console.log(ids);
-    ids.forEach(function(id){
-        if (id === ids.length.toString()){            
-            pCity.append(guideBook.places[id].city);
-            pTimeOfYear.append(guideBook.places[id].timeOfYear);
-            pbestRest.append(guideBook.places[id].bestRest);
-            card.append(pCity, pTimeOfYear, pbestRest);
-            display.append(card);
-        };
-    });
 
+    const ids = Object.keys(guideBook.places);
+    let newEntry = ids.pop();
+    card.setAttribute("id", newEntry)
+    pCity.append(guideBook.places[newEntry].city);
+    pTimeOfYear.append(guideBook.places[newEntry].timeOfYear);
+    pbestRest.append(guideBook.places[newEntry].bestRest);
+    card.append(pCity, pTimeOfYear, pbestRest, deleteBtn);
+    display.append(card);
+    deleteBtn.addEventListener("click", removeCard)
 }
+
+function removeCard(e) {
+    const id = e.target.parentNode.id;
+    guideBook.deleteEntry(id)
+    e.target.parentNode.remove();
+}
+
+
 
 window.addEventListener("load", function() {
     document.querySelector("form").addEventListener("submit", userInput)
