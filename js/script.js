@@ -17,3 +17,7 @@ function Place(city, timeOfYear, bestRest) {
     this.timeOfYear = timeOfYear;
     this.bestRest = bestRest;
 }
+
+Place.prototype.note = function(note) {
+    this.note = note;
+};

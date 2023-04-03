@@ -7,6 +7,12 @@ Code:
 let portland = new Place("Portland", "Summer", "Laangbahn");
 Expected Output: portland = { city: "Portland", timeOfYear: "Summer", bestRest: "Laangbahn" }
 
+Test: "Append note with .note() method to instance of place object"
+Code:
+let portland = new Place("Portland", "Summer", "Laangbahn");
+portland.note("Great place love the vibe")
+Expected Output: portland = {city: "Portland", timeOfYear: "Summer", bestRest: "Laangbahn", note: "Great place love the vibe" }
+
 Describe: GuideBook()
 
 Test: "Add Place instance into GuideBook object"
@@ -26,3 +32,4 @@ let guideBook = new GuideBook();
 guideBook.addPlace(portland);
 guideBook.addPlace(nyc);
 Expected Output: guideBook = {1: Place, 2: Place}
+
