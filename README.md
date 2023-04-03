@@ -43,4 +43,13 @@ guideBook.addPlace(nyc);
 guideBook.searchId(1) 
 Expected Output: 1: Place
 
+Test: "Will search for city name and return id and object values"
+Code: 
+let guideBook = new GuideBook();
+let portland = new Place("Portland", "Summer", "Laangbahn");
+let nyc = new Place("New York City", "Fall", "Coarse");
+guideBook.addPlace(portland);
+guideBook.addPlace(nyc);
+guideBook.searchCity("Portland");
+Expected Output: { 1: Place }
 
