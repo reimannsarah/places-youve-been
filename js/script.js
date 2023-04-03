@@ -12,6 +12,10 @@ GuideBook.prototype.assignId = function(){
     return this.currentId;
 }
 
+GuideBook.prototype.searchId = function(id){
+    return this.places[id];    
+}
+
 function Place(city, timeOfYear, bestRest) {
     this.city = city;
     this.timeOfYear = timeOfYear;
