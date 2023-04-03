@@ -1,5 +1,9 @@
-function GuideBook(place) {
-    this.place = place;
+function GuideBook() {
+    this.places = {};
+}
+
+GuideBook.prototype.addPlace = function(place) {
+    this.places[place.city] = place;
 }
 
 function Place(city, timeOfYear, bestRest) {
