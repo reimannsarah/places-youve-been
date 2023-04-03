@@ -18,3 +18,11 @@ guideBook.addPlace(portland);
 guideBook.addPlace(nyc);
 Expected Output: guideBook = { Portland: Place, New York City: Place }
 
+ Test: "assign specific number ID to each added instance of place into Guidebook"
+ Code: 
+let portland = new Place("Portland", "Summer", "Laangbahn");
+let nyc = new Place("New York City", "Fall", "Coarse");
+let guideBook = new GuideBook();
+guideBook.addPlace(portland);
+guideBook.addPlace(nyc);
+Expected Output: guideBook = {1: Place, 2: Place}
